@@ -3,12 +3,18 @@ import { getArticles } from "../utils/api"
 
 export const Articles = () => {
     const [articles, setArticles] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getArticles().then((articlesFromApi) => {
+            setLoading(false)
             setArticles(articlesFromApi)
         })
     }, [])
+
+    if(loading) {
+        return <h2 id="loading">Loading...</h2>
+    }
 
     return (
         <section id="articles">
