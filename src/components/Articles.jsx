@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getArticles } from "../utils/api"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Articles = () => {
     const [articles, setArticles] = useState([])
@@ -20,7 +20,7 @@ export const Articles = () => {
     return (
         <section id="articles">
         <ul>
-            {articles.map((article, index) => {
+            {articles.map((article) => {
                 return <li key={article.article_id}>
                         <Link to={`/articles/${article.article_id}`}>
                             <div className="articleContainer"><br/>
@@ -30,7 +30,6 @@ export const Articles = () => {
                             in {article.topic}<br />
                             <br/>
                             <img  className="articleImg" alt="relevant to article" src={article.article_img_url}></img>
-                            {/* {article.body} */}
                             <br/>
                             Comments: {article.comment_count}
                             &nbsp;

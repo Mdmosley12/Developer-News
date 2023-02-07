@@ -10,7 +10,7 @@ export const Comments = ({ comments }) => {
                     <div className="commentsContainer"><br />
                         Created by {comment.author}<br />
                         <p className="commentBody">{comment.body}</p>
-                        Votes: {comment.votes}<br />
+                        Votes: {comment.votes}
                         <br />
                     </div>
                 </li>

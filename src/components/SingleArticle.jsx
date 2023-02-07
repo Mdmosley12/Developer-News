@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
-import { getCommentsById, getSingleArticle } from "../utils/api"
+import { getCommentsById, getSingleArticle, patchArticle } from "../utils/api"
 import { useParams } from "react-router-dom"
 import { Comments } from "./Comments"
 
 export const SingleArticle = () => {
     const [singleArticle, setSingleArticle] = useState([])
     const [comments, setComments] = useState([])
-    const { article_id } = useParams()
     const [loading, setLoading] = useState(true)
+    const [err, setErr] = useState(null)
+    const { article_id } = useParams()
 
     useEffect(() => {
         Promise.all([getSingleArticle(article_id), getCommentsById(article_id)])
@@ -20,6 +21,15 @@ export const SingleArticle = () => {
         
     if(loading) {
         return <h2 id="loading">Loading...</h2>
+    }
+
+    const handleVoteClick = (article, vote) => {
+        setSingleArticle((article) => [{...article[0], votes: article[0].votes + vote.inc_votes}])
+        setErr(null);
+        patchArticle(article.article_id, vote).catch((err) => {
+            setSingleArticle((article) => [{...article[0], votes: article[0].votes - vote.inc_votes}])
+            setErr('Something went wrong, please try again');
+        });
     }
 
     return (
@@ -38,6 +48,9 @@ export const SingleArticle = () => {
                                 {article.body}<br />
                                 <br />
                                 Votes: {article.votes}
+                                {err ? <p>{err}</p> : null}
+                                <button onClick={() => handleVoteClick(article, {inc_votes : 1})} className="upVote">&uarr;</button>&nbsp;
+                                <button onClick={() => handleVoteClick(article, {inc_votes : -1})} className="downVote">&darr;</button>
                             </div>
                         </li>
                     )

@@ -126,6 +126,27 @@ a {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+.upVote {
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    border: none;
+    background-color: whitesmoke;
+}
+.upVote:hover {
+    cursor: pointer;
+}
+.downVote {
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    border: none;
+    background-color: whitesmoke;
+}
+.downVote:hover {
+    cursor: pointer;
+}
+
 
 
 
