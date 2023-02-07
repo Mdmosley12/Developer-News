@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getCommentsById, getSingleArticle } from "../utils/api"
 import { useParams } from "react-router-dom"
+import { Comments } from "./Comments"
 
 export const SingleArticle = () => {
     const [singleArticle, setSingleArticle] = useState([])
@@ -42,22 +43,7 @@ export const SingleArticle = () => {
                     )
                 })}
             </ul>
-
-            <ul id="commentsUnorderedList">
-                <h2 id="commentsTitle">Comments</h2>
-                {comments.map((comment) => {
-                    return (
-                        <li id="commentsList" key={comment.comment_id}>
-                            <div className="commentsContainer"><br />
-                                Created by {comment.author}<br />
-                                <p className="commentBody">{comment.body}</p>
-                                Votes: {comment.votes}<br />
-                                <br />
-                            </div>
-                        </li>
-                    )
-                })}
-            </ul>
+            <Comments comments={comments}/>
         </section>
     )
 }
