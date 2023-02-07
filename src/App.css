@@ -82,9 +82,11 @@ a {
 #singleArticle {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-#singleUnorderedList {
+#singleArticleUL {
     width: 50%;
     border-left: 1px solid black;
     border-right: 1px solid black;
@@ -102,6 +104,27 @@ a {
 }
 #singleArticleTitle {
     font-size: 20px;
+}
+#commentsUnorderedList {
+    width: 50%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#commentsList {
+    width: 75%;
+}
+.commentsContainer {
+    width: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.commentBody {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
