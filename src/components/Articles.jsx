@@ -24,11 +24,13 @@ export const Articles = () => {
                 return <li key={article.article_id}>
                         <Link to={`/articles/${article.article_id}`}>
                             <div className="articleContainer"><br/>
-                            {article.title}<br/>
-                            Listed in {article.topic}<br/>
-                            Posted by {article.author}<br/>
+                            <p id="articleTitle">{article.title}</p>
                             <br/>
-                            {article.body}
+                            Posted by {article.author}&nbsp;
+                            in {article.topic}<br />
+                            <br/>
+                            <img  className="articleImg" alt="relevant to article" src={article.article_img_url}></img>
+                            {/* {article.body} */}
                             <br/>
                             Comments: {article.comment_count}
                             &nbsp;

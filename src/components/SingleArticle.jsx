@@ -19,16 +19,16 @@ export const SingleArticle = () => {
     }
 
     return (
-        <section id="articles">
-            <ul>
+        <section id="singleArticle">
+            <ul id="singleUnorderedList">
                 {singleArticle.map((article) => {
                     return (
-                        <li key={article.article_id}>
-                            <div className="articleContainer">
-                                <p id="articleTitle">{article.title}</p><br />
+                        <li id="singleList" key={article.article_id}>
+                            <div className="singleArticleContainer">
+                                <p id="singleArticleTitle">{article.title}</p>
                                 {article.topic}<br />
                                 <br />
-                                <img  className="articleImg" alt="relevant to article" src={article.article_img_url}></img>
+                                <img  className="singleArticleImg" alt="relevant to article" src={article.article_img_url}></img><br />
                                 Created by{article.author}<br />
                                 <br />
                                 {article.body}<br />
