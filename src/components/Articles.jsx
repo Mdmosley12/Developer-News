@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getArticles } from "../utils/api"
+import {Link} from 'react-router-dom'
 
 export const Articles = () => {
     const [articles, setArticles] = useState([])
@@ -21,18 +22,20 @@ export const Articles = () => {
         <ul>
             {articles.map((article, index) => {
                 return <li key={article.article_id}>
-                        <div className="articleContainer"><br/>
-                        {article.title}<br/>
-                        Listed in {article.topic}<br/>
-                        Posted by {article.author}<br/>
-                        <br/>
-                        {article.body}
-                        <br/>
-                        Comments: {article.comment_count}
-                        &nbsp;
-                        Votes: {article.votes}
-                        </div>
-                    </li>
+                        <Link to={`/articles/${article.article_id}`}>
+                            <div className="articleContainer"><br/>
+                            {article.title}<br/>
+                            Listed in {article.topic}<br/>
+                            Posted by {article.author}<br/>
+                            <br/>
+                            {article.body}
+                            <br/>
+                            Comments: {article.comment_count}
+                            &nbsp;
+                            Votes: {article.votes}
+                            </div>
+                        </Link>
+                </li>
             })}
         </ul>
         </section>
