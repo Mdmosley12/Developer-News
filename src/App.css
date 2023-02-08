@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    color: black;
 }
 
 html {
@@ -74,9 +75,7 @@ body {
     height: 100%;
 }
 #articles {
-    border: 1px solid black;
-    background: rgb(173,204,145);
-background: linear-gradient(90deg, rgba(173,204,145,1) 0%, rgba(255,255,255,1) 50%, rgba(173,204,145,1) 100%);
+    border-top: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -90,7 +89,7 @@ ul {
 }
 li {
     list-style: none;
-    width: 50%;
+    width: 25%;
 }
 a {
     display: flex;
@@ -101,7 +100,7 @@ a {
     height: 100%;
 }
 .articleContainer {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 10px;
     padding: 0px 10px 0px 10px;
     background-color: whitesmoke;
@@ -118,6 +117,27 @@ a {
 }
 #articleTitle {
     font-size: 20px;
+}
+#seeMoreButton {
+    border: none;
+    background-color: whitesmoke;
+    font-size: 16px;
+    margin-top: 10px;
+    color: blue;
+}
+#seeMoreButton:hover {
+    cursor: pointer;
+}
+#seeLessButton {
+    border: none;
+    background-color: whitesmoke;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: blue;
+}
+#seeLessButton:hover {
+    cursor: pointer;
 }
 
 
