@@ -56,7 +56,7 @@ export const SingleArticle = () => {
                     )
                 })}
             </ul>
-            <Comments comments={comments}/>
+            <Comments article_id={article_id} comments={comments} setComments={setComments}/>
         </section>
     )
 }
