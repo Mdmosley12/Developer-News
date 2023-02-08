@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getArticles } from "../utils/api"
 import { Link } from 'react-router-dom'
+import { Nav } from "./Nav"
 
 export const Articles = () => {
     const [articles, setArticles] = useState([])
@@ -19,9 +20,10 @@ export const Articles = () => {
 
     return (
         <section id="articles">
-        <ul>
-            {articles.map((article) => {
-                return <li key={article.article_id}>
+            <Nav setArticles={setArticles}/>
+            <ul>
+                {articles.map((article) => {
+                    return <li key={article.article_id}>
                         <Link to={`/articles/${article.article_id}`}>
                             <div className="articleContainer"><br/>
                             <p id="articleTitle">{article.title}</p>
@@ -36,10 +38,9 @@ export const Articles = () => {
                             Votes: {article.votes}
                             </div>
                         </Link>
-                </li>
-            })}
-        </ul>
+                    </li>
+                })}
+            </ul>
         </section>
     )
-
 }
