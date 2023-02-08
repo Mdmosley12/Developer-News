@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getArticles, getQueriedArticles, getTopics } from "../utils/api"
+import { getArticles, getTopics } from "../utils/api"
 import { Link, useSearchParams } from "react-router-dom"
 
 export const Nav = ({setArticles}) => {
@@ -18,7 +18,7 @@ export const Nav = ({setArticles}) => {
             setTopics(topicsFromApi)
         })
         if(sortByQuery) {
-            getQueriedArticles(sortByQuery).then((queriedArticles) => {
+            getArticles(sortByQuery).then((queriedArticles) => {
                 setArticles(queriedArticles)
             })
         }

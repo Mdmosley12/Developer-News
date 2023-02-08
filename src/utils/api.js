@@ -4,8 +4,12 @@ const newsAPI = axios.create({
     baseURL: 'https://developer-news.onrender.com/api'
 });
 
-export const getArticles = () => {
-    return newsAPI.get(`/articles`).then(( { data } ) => {
+export const getArticles = (sortByQuery) => {
+    return newsAPI.get(`/articles`, {
+        params: {
+            topic: sortByQuery
+        }
+    }).then(( { data } ) => {
         return data.articles
     })
 }
@@ -33,10 +37,4 @@ export const getTopics = () => {
         return data.topics
     })
   }
-
-  export const getQueriedArticles = (sortByQuery) => {
-    return newsAPI.get(`/articles?topic=${sortByQuery}`).then(( { data } ) => {
-        return data.articles
-      });
-  };
   
