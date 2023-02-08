@@ -27,3 +27,16 @@ export const patchArticle = (article_id, vote) => {
         return [data.updatedArticle]
     })
 }
+
+export const getTopics = () => {
+    return newsAPI.get(`/topics`).then(( {data} ) => {
+        return data.topics
+    })
+  }
+
+  export const getQueriedArticles = (sortByQuery) => {
+    return newsAPI.get(`/articles?topic=${sortByQuery}`).then(( { data } ) => {
+        return data.articles
+      });
+  };
+  
