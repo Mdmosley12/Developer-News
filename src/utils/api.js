@@ -17,7 +17,7 @@ export const getSingleArticle = (article_id) => {
 }
 
 export const getCommentsById = (article_id) => {
-    return newsAPI.get(`/articles/${article_id}/comments`, ).then(( { data }) => {
+    return newsAPI.get(`/articles/${article_id}/comments`).then(( { data }) => {
         return data.comments
     })
 }
@@ -25,5 +25,11 @@ export const getCommentsById = (article_id) => {
 export const patchArticle = (article_id, vote) => {
     return newsAPI.patch(`/articles/${article_id}`, vote).then(( { data } ) => {
         return [data.updatedArticle]
+    })
+}
+
+export const postComment = (article_id, newComment) => {
+    return newsAPI.post(`/articles/${article_id}/comments`, newComment).then(( { data } ) => {
+        return data.comment
     })
 }
