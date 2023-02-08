@@ -30,7 +30,6 @@ export const Articles = () => {
                             <br/>
                             Posted by {article.author}&nbsp;
                             in {article.topic}<br />
-                            <br/>
                             <img  className="articleImg" alt="relevant to article" src={article.article_img_url}></img>
                             <br/>
                             Comments: {article.comment_count}

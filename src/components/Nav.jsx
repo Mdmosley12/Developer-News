@@ -6,33 +6,56 @@ export const Nav = ({setArticles}) => {
     const [topics, setTopics] = useState([])
     let [searchParams, setSearchParams] = useSearchParams()
 
-    const sortByQuery = searchParams.get("category_name")
-    const setChosenCategory = (category) =>{
-    const newParams = new URLSearchParams(searchParams)
-    newParams.set("category_name", category)
-    setSearchParams(newParams)
-  }
+    const filterByQuery = searchParams.get("topic")
+    const sortByQuery = searchParams.get("sort_by")
+    const orderByQuery = searchParams.get("order")
+
+    const setChosenTopic = (topic) => {
+        const newParams = new URLSearchParams(searchParams)
+        newParams.set("topic", topic)
+        setSearchParams(newParams)
+    }
+    const setChosenSortBy = (sortBy) => {
+        const newParams = new URLSearchParams(searchParams)
+        newParams.set("sort_by", sortBy)
+        setSearchParams(newParams)
+    }
+    const setChosenOrderBy = (orderBy) => {
+        const newParams = new URLSearchParams(searchParams)
+        newParams.set("order", orderBy)
+        setSearchParams(newParams)
+    }
 
     useEffect(() => {
         getTopics().then((topicsFromApi) => {
             setTopics(topicsFromApi)
         })
-        if(sortByQuery) {
-            getArticles(sortByQuery).then((queriedArticles) => {
+        if(filterByQuery || sortByQuery || orderByQuery) {
+            getArticles(filterByQuery, sortByQuery, orderByQuery).then((queriedArticles) => {
                 setArticles(queriedArticles)
             })
         }
-    }, [sortByQuery]);
+    }, [filterByQuery, sortByQuery, orderByQuery]);
 
     return (
         <nav id="nav">
-            <h2 id="filterHeader">Filter Topic By:</h2>
+            <div id="filterControls">
+            <h2 id="filterHeader">Filter Articles</h2>
+            <br />
+            <h3>Filter by:</h3>
             {topics.map((topic, index) => {
                 return (
-                        <button className="filterButton" key={index} onClick={()=>setChosenCategory(topic.slug)}>{topic.slug}</button>
+                        <button className="filterButton" key={index} onClick={() => setChosenTopic(topic.slug)}>{topic.slug}</button>
                         )
                     })}
-                    <Link className="resetFilterLink" to="/"><button className="resetFilter" onClick={() => getArticles().then((articlesFromApi) => {setArticles(articlesFromApi)})}>Reset Filter</button></Link>
+                <h3>Sort By:</h3>
+                <button id="datePostedFilter" onClick={() => setChosenSortBy('created_at')}>Date Posted</button>
+                <button id="votesFilter" onClick={() => setChosenSortBy('votes')}>Votes</button>
+                <h3>Order By:</h3>
+                <button id="ascending" onClick={() => setChosenOrderBy('ASC')}>Ascending</button>
+                <button id="descending" onClick={() => setChosenOrderBy('DESC')}>Descending</button>
+                <Link className="resetFilterLink" to="/"><button className="resetFilter" onClick={() => getArticles().then((articlesFromApi) => {setArticles(articlesFromApi)})}>Reset Filter</button></Link>
+            </div>
         </nav>
     )
 }

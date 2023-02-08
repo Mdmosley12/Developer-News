@@ -26,29 +26,52 @@ body {
 }
 #nav {
     width: 25%;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-left: 10px;
-    height: 200px;
-    border-right: 1px solid black;
+}
+#filterControls {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid black;
 }
 .filterButton {
-    width: 70px;
-    height: 30px;
-    align-self: flex-end;
-    margin-right: 50px;
-    margin-bottom: 5px;
+    width: 90px;
+    align-self: center;
+    margin-top: 3px;
+}
+#datePostedFilter {
+    width: 90px;
+    align-self: center;
+    margin-top: 3px;
+}
+#votesFilter {
+    width: 90px;
+    align-self: center;
+    margin-top: 3px;
+}
+#ascending {
+    width: 90px;
+    align-self: center;
+    margin-top: 3px;
+}
+#descending {
+    width: 90px;
+    align-self: center;
+    margin-top: 3px;
 }
 .resetFilterLink {
-    width: 25%;
+    width: 90px;
     height: 30px;
-    align-self: flex-end;
-    margin-right: 20px;
+    align-self: center;
+    margin-top: 6px;
 }
 .resetFilter {
     width: 100%;
+    height: 100%;
 }
 #articles {
     border: 1px solid black;
@@ -59,19 +82,15 @@ background: linear-gradient(90deg, rgba(173,204,145,1) 0%, rgba(255,255,255,1) 5
     justify-content: flex-start;
 }
 ul {
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-self: center;
+    height: 100%;
 }
 li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
+    list-style: none;
+    width: 50%;
 }
 a {
     display: flex;
@@ -87,6 +106,11 @@ a {
     padding: 0px 10px 0px 10px;
     background-color: whitesmoke;
     width: 100%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: flex-start;
 }
 .articleImg {
     width: 100%;
@@ -100,7 +124,6 @@ a {
 
 #singleArticle {
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
     align-items: center;
 }
@@ -140,6 +163,9 @@ a {
     flex-direction: column;
     align-items: center;
 }
+#commentBox {
+    width: 100%;
+}
 #commentsList {
     width: 75%;
 }
@@ -170,6 +196,28 @@ a {
 }
 .downVote:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
+    #header {
+        background-color: aqua;
+    }
+    #filterControls {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #articles {
+        display: flex;
+        justify-content:flex-start
+    }
+    ul {
+        width: 80%;
+    }
+    li {
+        width: 50%;
+    }
 }
 
 
