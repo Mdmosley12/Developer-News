@@ -31,7 +31,8 @@ export const SingleArticle = () => {
     const handleVoteClick = (article, vote) => {
         setSingleArticle((article) => [{...article[0], votes: article[0].votes + vote.inc_votes}])
         setErr(null);
-        patchArticle(article.article_id, vote).catch((err) => {
+        patchArticle(article.article_id, vote)
+        .catch((err) => {
             setSingleArticle((article) => [{...article[0], votes: article[0].votes - vote.inc_votes}])
             setErr('Something went wrong, please try again');
         });
