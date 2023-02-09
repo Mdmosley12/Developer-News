@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getArticles, getTopics } from "../utils/api"
 import { Link, useSearchParams } from "react-router-dom"
+import { capitaliseString } from "../utils/capitaliseString"
 
 export const Nav = ({setArticles}) => {
     const [topics, setTopics] = useState([])
@@ -45,7 +46,7 @@ export const Nav = ({setArticles}) => {
             <h3>Filter by:</h3>
             {topics.map((topic, index) => {
                 return (
-                        <button className="filterButton" key={index} onClick={() => setChosenTopic(topic.slug)}>{topic.slug}</button>
+                        <button className="filterButton" key={index} onClick={() => setChosenTopic(topic.slug)}>{capitaliseString(topic.slug)}</button>
                         )
                     })}
                 <h3>Sort By:</h3>
