@@ -5,6 +5,7 @@ import { Articles } from './components/Articles';
 import { SingleArticle } from './components/SingleArticle';
 import { UserLogin } from './components/UserLogin';
 import { useState } from 'react';
+import { ErrorPage } from './components/ErrorPage';
 
 function App() {
   const [user, setUser] = useState()
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Articles />}></Route>
         <Route path="/articles/:article_id/*" element={<SingleArticle user={user}/>}></Route>
         <Route path="/userLogin" element={<UserLogin user={user} setUser={setUser}/>}></Route>
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </div>
   );

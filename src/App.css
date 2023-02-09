@@ -224,6 +224,7 @@ a {
     background-color: whitesmoke;
     font-size: 16px;
     margin-top: 10px;
+    margin-bottom: 10px;
     color: blue;
 }
 #seeMoreButton:hover {
@@ -303,7 +304,7 @@ a {
     height: 30px;
     font-size: 25px;
     border: none;
-    background-color: whitesmoke;
+    background-color: white;
 }
 .upVote:hover {
     cursor: pointer;
@@ -313,7 +314,7 @@ a {
     height: 30px;
     font-size: 25px;
     border: none;
-    background-color: whitesmoke;
+    background-color: white;
 }
 .downVote:hover {
     cursor: pointer;

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { getCommentsById, getSingleArticle, patchArticle } from "../utils/api"
 import { useParams } from "react-router-dom"
 import { Comments } from "./Comments"
+import { capitaliseString } from "../utils/capitaliseString"
 
 export const SingleArticle = ({ user }) => {
     const [singleArticle, setSingleArticle] = useState([])
@@ -16,6 +17,10 @@ export const SingleArticle = ({ user }) => {
                 setLoading(false)
                 setSingleArticle(articleFromApi)
                 setComments(commentsFromApi)
+            })
+            .catch((err) => {
+                setLoading(false)
+                setErr(err.message)
             })
         }, [])
         
@@ -33,7 +38,10 @@ export const SingleArticle = ({ user }) => {
         });
     }
 
-    return (
+  if (err) {
+      return <h1>{err}</h1>
+  } else {
+          return (
         <section id="singleArticle">
             <ul id="singleArticleUL">
                 {singleArticle.map((article) => {
@@ -60,4 +68,4 @@ export const SingleArticle = ({ user }) => {
             <Comments user={user} err={err} setErr={setErr} article_id={article_id} comments={comments} setComments={setComments}/>
         </section>
     )
-}
+  }

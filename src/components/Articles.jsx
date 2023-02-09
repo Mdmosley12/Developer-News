@@ -23,7 +23,7 @@ export const Articles = () => {
 
     const handleSeeMore = () => {
         setLimit(articles.length);
-      };
+    };
     const handleSeeLess = () => {
         setLimit(8)
     }
