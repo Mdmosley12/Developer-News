@@ -10,18 +10,21 @@ export const CommentAdder = ({ user, commentDeleted, comments, setComments, arti
       };
 
     const handleSubmit = (event) => {
-        console.log(user)
         event.preventDefault();
-        if (inputValue.length !== 0) {
-            setIsSubmitting(true);
-            postComment(article_id, { username: user, body: inputValue})
-            .then((newCommentFromApi) => {
-                setComments([newCommentFromApi, ...comments])
-                setInputValue("")
-                setIsSubmitting(false)
-            })
+        if(!user) {
+            alert('Please log in to comment!')
+        } else if (inputValue.length === 0) {
+            alert('Cannot post an empty comment!')
         } else {
-            alert('Cannot post empty comment!')
+            if (inputValue.length !== 0) {
+                setIsSubmitting(true);
+                postComment(article_id, { username: user, body: inputValue})
+                .then((newCommentFromApi) => {
+                    setComments([newCommentFromApi, ...comments])
+                    setInputValue("")
+                    setIsSubmitting(false)
+                })
+            }
         }
     }
 

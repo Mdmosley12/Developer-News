@@ -3,6 +3,7 @@ import { getArticles } from "../utils/api"
 import { Link } from 'react-router-dom'
 import { Nav } from "./Nav"
 import { truncateString } from "../utils/truncateString"
+import { capitaliseString } from "../utils/capitaliseString"
 import { PopularArticles } from "./PopularArticles"
 
 export const Articles = () => {
@@ -41,7 +42,7 @@ export const Articles = () => {
                         <Link to={`/articles/${article.article_id}`}>
                             <div className="articleContainer">
                             <p>Posted by {article.author}&nbsp;
-                            in {article.topic}</p>
+                            in {capitaliseString(article.topic)}</p>
                             <img  className="articleImg" alt="relevant to article" src={article.article_img_url}></img>
                             <p id="articleTitle">{truncateString(article.title)}</p>
                             <p>Comments: {article.comment_count}

@@ -19,7 +19,7 @@ export const Comments = ({ user, err ,setErr, setComments, comments, article_id 
                             <p className="commentBody">{comment.body}</p>
                             Votes: {comment.votes}
                             <br />
-                            {comment.author === 'cooljmessy' ? <CommentDeleter setCommentDeleted={setCommentDeleted} comments={comments} err={err} setErr={setErr} setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
+                            {comment.author === user ? <CommentDeleter setCommentDeleted={setCommentDeleted} comments={comments} err={err} setErr={setErr} setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
                         </div>
                     </li>
                 )

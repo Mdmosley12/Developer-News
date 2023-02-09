@@ -49,10 +49,10 @@ export const SingleArticle = ({ user }) => {
                         <li id="singleList" key={article.article_id}>
                             <div className="singleArticleContainer">
                                 <h2 id="singleArticleTitle">{article.title}</h2>
-                                {article.topic}<br />
+                                {capitaliseString(article.topic)}<br />
                                 <br />
                                 <img  className="singleArticleImg" alt="relevant to article" src={article.article_img_url}></img><br />
-                                Created by{article.author}<br />
+                                Created by {article.author}<br />
                                 <br />
                                 {article.body}<br />
                                 <br />
@@ -69,3 +69,4 @@ export const SingleArticle = ({ user }) => {
         </section>
     )
   }
+}
