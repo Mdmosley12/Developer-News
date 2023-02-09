@@ -1,7 +1,7 @@
 import { CommentAdder } from "./CommentAdder"
 import { CommentDeleter } from "./CommentDeleter"
 
-export const Comments = ({ setComments, comments, article_id }) => {
+export const Comments = ({ err ,setErr, setComments, comments, article_id }) => {
 
     return (
         <section id="commentSection">
@@ -16,7 +16,7 @@ export const Comments = ({ setComments, comments, article_id }) => {
                             <p className="commentBody">{comment.body}</p>
                             Votes: {comment.votes}
                             <br />
-                            {comment.author === 'cooljmessy' ? <CommentDeleter setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
+                            {comment.author === 'cooljmessy' ? <CommentDeleter comments={comments} err={err} setErr={setErr} setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
                         </div>
                     </li>
                 )
