@@ -77,7 +77,7 @@ a > p {
     margin-top: 20px;
     margin-left: 20px;
     padding-left: 5px;
-    width: 335px;
+    width: 80%;
     height: 40px;
     font-size: 20px;
 }
@@ -241,6 +241,9 @@ a {
 #seeLessButton:hover {
     cursor: pointer;
 }
+button:hover {
+    cursor: pointer;
+}
 
 
 
@@ -326,7 +329,7 @@ a {
 
 @media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
     #header {
-        background-color: aqua;
+        background-color: #233142;
     }
     #filterControls {
         width: 80%;
@@ -339,10 +342,29 @@ a {
         justify-content:flex-start
     }
     ul {
-        width: 80%;
+        width: 100%;
     }
     li {
         width: 50%;
+    }
+    #loginContainer > a {
+    width: 20%;
+    display: flex;
+    align-items: end;
+    }
+    #loginBox {
+        width: 45%;
+    }
+}
+@media only screen and (max-width: 1070px), only screen and (max-device-width: 1024px) {
+    ul {
+        width: 100%;
+    }
+    #loginContainer > a {
+        width: 20%;
+    }
+    #loginBox {
+        width: 35%;
     }
 }
 
