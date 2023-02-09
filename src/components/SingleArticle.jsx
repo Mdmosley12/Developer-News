@@ -3,7 +3,7 @@ import { getCommentsById, getSingleArticle, patchArticle } from "../utils/api"
 import { useParams } from "react-router-dom"
 import { Comments } from "./Comments"
 
-export const SingleArticle = () => {
+export const SingleArticle = ({ user }) => {
     const [singleArticle, setSingleArticle] = useState([])
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
@@ -57,7 +57,7 @@ export const SingleArticle = () => {
                     )
                 })}
             </ul>
-            <Comments err={err} setErr={setErr} article_id={article_id} comments={comments} setComments={setComments}/>
+            <Comments user={user} err={err} setErr={setErr} article_id={article_id} comments={comments} setComments={setComments}/>
         </section>
     )
 }
