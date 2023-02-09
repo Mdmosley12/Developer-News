@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { deleteComment, getCommentsById } from "../utils/api"
 
-export const CommentDeleter = ({err, setErr ,setComments, article_id, comment_id}) => {
+export const CommentDeleter = ({setCommentDeleted, err, setErr ,setComments, article_id, comment_id}) => {
     const [isDeleting, setIsDeleting] = useState(false);
-
+ 
     const handleDelete = () => {
         setIsDeleting(true)
         setErr(null)
         deleteComment(comment_id).then(() => {
+            setCommentDeleted(true)
             getCommentsById(article_id).then((commentsFromAPI) => {
                 setComments(commentsFromAPI)
                 setIsDeleting(false)

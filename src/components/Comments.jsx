@@ -1,12 +1,15 @@
+import { useState } from "react"
 import { CommentAdder } from "./CommentAdder"
 import { CommentDeleter } from "./CommentDeleter"
 
 export const Comments = ({ err ,setErr, setComments, comments, article_id }) => {
+    const [commentDeleted, setCommentDeleted] = useState(false)
+
 
     return (
         <section id="commentSection">
             <h2 id="commentsTitle">Comments</h2>
-            <CommentAdder setComments={setComments} comments={comments} article_id={article_id}/>
+            <CommentAdder commentDeleted={commentDeleted} setComments={setComments} comments={comments} article_id={article_id}/>
             <ul id="commentsUnorderedList">
                 {comments.map((comment) => {
                 return (
@@ -16,7 +19,7 @@ export const Comments = ({ err ,setErr, setComments, comments, article_id }) => 
                             <p className="commentBody">{comment.body}</p>
                             Votes: {comment.votes}
                             <br />
-                            {comment.author === 'cooljmessy' ? <CommentDeleter comments={comments} err={err} setErr={setErr} setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
+                            {comment.author === 'cooljmessy' ? <CommentDeleter setCommentDeleted={setCommentDeleted} comments={comments} err={err} setErr={setErr} setComments={setComments} article_id={comment.article_id} comment_id={comment.comment_id} /> : null}
                         </div>
                     </li>
                 )

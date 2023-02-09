@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
 
-export const CommentAdder = ({ comments, setComments, article_id }) => {
+export const CommentAdder = ({ commentDeleted, comments, setComments, article_id }) => {
     const [inputValue, setInputValue] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -29,6 +29,7 @@ export const CommentAdder = ({ comments, setComments, article_id }) => {
             <label htmlFor="commentBox"></label>
             <textarea disabled={isSubmitting} value={inputValue} onChange={handleChange} placeholder="Enter your Comment..." id="commentBox" name="commentBox" rows="5" cols="65"></textarea><br />
             <button disabled={isSubmitting} onClick={handleSubmit} type="submit">{isSubmitting ? "Posting..." : "Post Comment"}</button>
+            {commentDeleted ? <p>Comment Deleted.</p> : null}
         </form>
     )
 }
