@@ -239,6 +239,10 @@ a {
 .downVote:hover {
     cursor: pointer;
 }
+#errP {
+    width: 50%;
+    display: inline;
+}
 
 @media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
     #header {

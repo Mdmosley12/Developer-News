@@ -41,7 +41,12 @@ export const postComment = (article_id, newComment) => {
 }
 
 export const getTopics = () => {
-    return newsAPI.get(`/topics`).then(( {data} ) => {
+    return newsAPI.get(`/topics`).then(( { data } ) => {
         return data.topics
     })
-  }
+}
+
+export const deleteComment = (comment_id) => {
+    return newsAPI.delete(`/comments/${comment_id}`)
+}
+

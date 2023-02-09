@@ -26,7 +26,8 @@ export const SingleArticle = () => {
     const handleVoteClick = (article, vote) => {
         setSingleArticle((article) => [{...article[0], votes: article[0].votes + vote.inc_votes}])
         setErr(null);
-        patchArticle(article.article_id, vote).catch((err) => {
+        patchArticle(article.article_id, vote)
+        .catch((err) => {
             setSingleArticle((article) => [{...article[0], votes: article[0].votes - vote.inc_votes}])
             setErr('Something went wrong, please try again');
         });
@@ -48,15 +49,15 @@ export const SingleArticle = () => {
                                 {article.body}<br />
                                 <br />
                                 Votes: {article.votes}
-                                {err ? <p>{err}</p> : null}
                                 <button onClick={() => handleVoteClick(article, {inc_votes : 1})} className="upVote">&uarr;</button>&nbsp;
                                 <button onClick={() => handleVoteClick(article, {inc_votes : -1})} className="downVote">&darr;</button>
+                                {err ? <p id="errP">{err}</p> : null}
                             </div>
                         </li>
                     )
                 })}
             </ul>
-            <Comments article_id={article_id} comments={comments} setComments={setComments}/>
+            <Comments err={err} setErr={setErr} article_id={article_id} comments={comments} setComments={setComments}/>
         </section>
     )
 }
