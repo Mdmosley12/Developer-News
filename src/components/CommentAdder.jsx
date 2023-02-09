@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
 
-export const CommentAdder = ({ commentDeleted, comments, setComments, article_id }) => {
+export const CommentAdder = ({ user, commentDeleted, comments, setComments, article_id }) => {
     const [inputValue, setInputValue] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -10,10 +10,11 @@ export const CommentAdder = ({ commentDeleted, comments, setComments, article_id
       };
 
     const handleSubmit = (event) => {
+        console.log(user)
         event.preventDefault();
         if (inputValue.length !== 0) {
             setIsSubmitting(true);
-            postComment(article_id, { username: "cooljmessy", body: inputValue})
+            postComment(article_id, { username: user, body: inputValue})
             .then((newCommentFromApi) => {
                 setComments([newCommentFromApi, ...comments])
                 setInputValue("")

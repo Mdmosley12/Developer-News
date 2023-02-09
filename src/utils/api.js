@@ -50,3 +50,9 @@ export const deleteComment = (comment_id) => {
     return newsAPI.delete(`/comments/${comment_id}`)
 }
 
+export const getUsers = () => {
+    return newsAPI.get(`/users`).then(( { data } ) => {
+        return data.users
+    })
+}
+

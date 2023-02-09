@@ -2,14 +2,14 @@ import { useState } from "react"
 import { CommentAdder } from "./CommentAdder"
 import { CommentDeleter } from "./CommentDeleter"
 
-export const Comments = ({ err ,setErr, setComments, comments, article_id }) => {
+export const Comments = ({ user, err ,setErr, setComments, comments, article_id }) => {
     const [commentDeleted, setCommentDeleted] = useState(false)
 
 
     return (
         <section id="commentSection">
             <h2 id="commentsTitle">Comments</h2>
-            <CommentAdder commentDeleted={commentDeleted} setComments={setComments} comments={comments} article_id={article_id}/>
+            <CommentAdder user={user} commentDeleted={commentDeleted} setComments={setComments} comments={comments} article_id={article_id}/>
             <ul id="commentsUnorderedList">
                 {comments.map((comment) => {
                 return (
