@@ -54,14 +54,12 @@ export const Nav = ({setArticles}) => {
         return (
             <nav id="nav">
                 <div id="filterControls">
-                <h2 id="filterHeader">Filter Articles</h2>
-                <br />
-                <h3>Filter by:</h3>
-                {topics.map((topic, index) => {
-                    return (
-                            <button className="filterButton" key={index} onClick={() => setChosenTopic(topic.slug)}>{capitaliseString(topic.slug)}</button>
-                            )
-                        })}
+                    <h2 id="filterHeader">Filter Articles</h2>
+                    <br />
+                    <h3>Filter by:</h3>
+                    {topics.map((topic, index) => {
+                        return <button className="filterButton" key={index} onClick={() => setChosenTopic(topic.slug)}>{capitaliseString(topic.slug)}</button>
+                    })}
                     <h3>Sort By:</h3>
                     <button id="datePostedFilter" onClick={() => setChosenSortBy('created_at')}>Date Posted</button>
                     <button id="votesFilter" onClick={() => setChosenSortBy('votes')}>Votes</button>

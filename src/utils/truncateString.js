@@ -1,7 +1,7 @@
 
-export const truncateString = (s) => {
-  if (s.length > 25) {
-    return s.slice(0, 22) + "...";
+export const truncateString = (str) => {
+  if (str.length > 25) {
+    return str.slice(0, 22) + "...";
   }
-  return s;
+  return str;
 }
