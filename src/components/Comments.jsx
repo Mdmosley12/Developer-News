@@ -9,7 +9,7 @@ export const Comments = ({ user, err ,setErr, setComments, comments, article_id 
     return (
         <section id="commentSection">
             <h2 id="commentsTitle">Comments</h2>
-            <CommentAdder user={user} commentDeleted={commentDeleted} setComments={setComments} comments={comments} article_id={article_id}/>
+            <CommentAdder user={user} setCommentDeleted={setCommentDeleted} commentDeleted={commentDeleted} setComments={setComments} comments={comments} article_id={article_id}/>
             <ul id="commentsUnorderedList">
                 {comments.map((comment) => {
                     return (
