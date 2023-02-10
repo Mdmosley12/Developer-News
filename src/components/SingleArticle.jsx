@@ -6,6 +6,7 @@ import { capitaliseString } from "../utils/capitaliseString"
 
 export const SingleArticle = ({ user }) => {
     const [singleArticle, setSingleArticle] = useState([])
+    const [voteErrorMessage, setVoteErrorMessage] = useState(null)
     const [comments, setComments] = useState([])
     const [loading, setLoading] = useState(true)
     const [err, setErr] = useState(null)
@@ -29,13 +30,17 @@ export const SingleArticle = ({ user }) => {
     }
 
     const handleVoteClick = (article, vote) => {
-        setSingleArticle((article) => [{...article[0], votes: article[0].votes + vote.inc_votes}])
-        setErr(null);
-        patchArticle(article.article_id, vote)
-        .catch((err) => {
-            setSingleArticle((article) => [{...article[0], votes: article[0].votes - vote.inc_votes}])
-            setErr('Something went wrong, please try again');
-        });
+        if (user) {
+            setSingleArticle((article) => [{...article[0], votes: article[0].votes + vote.inc_votes}])
+            setErr(null);
+            patchArticle(article.article_id, vote)
+            .catch((err) => {
+                setSingleArticle((article) => [{...article[0], votes: article[0].votes - vote.inc_votes}])
+                setErr('Something went wrong, please try again');
+            });
+        } else {
+            setVoteErrorMessage('Please login to vote!')
+        }
     }
 
   if (err) {
@@ -59,6 +64,7 @@ export const SingleArticle = ({ user }) => {
                                 Votes: {article.votes}
                                 <button onClick={() => handleVoteClick(article, {inc_votes : 1})} className="upVote">&uarr;</button>&nbsp;
                                 <button onClick={() => handleVoteClick(article, {inc_votes : -1})} className="downVote">&darr;</button>
+                                <p id="voteError">{voteErrorMessage}</p>
                                 {err ? <p id="errP">{err}</p> : null}
                             </div>
                         </li>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
 
-export const CommentAdder = ({ user, commentDeleted, comments, setComments, article_id }) => {
+export const CommentAdder = ({ user, setCommentDeleted, commentDeleted, comments, setComments, article_id }) => {
     const [inputValue, setInputValue] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [pleaseLoginMessage, setPleaseLoginMessage] = useState(null)
 
     const handleChange = (event) => {
         setInputValue(event.target.value);
@@ -12,19 +13,19 @@ export const CommentAdder = ({ user, commentDeleted, comments, setComments, arti
     const handleSubmit = (event) => {
         event.preventDefault();
         if(!user) {
-            alert('Please log in to comment!')
+            setPleaseLoginMessage('Please login to comment!')
         } else if (inputValue.length === 0) {
-            alert('Cannot post an empty comment!')
+            setPleaseLoginMessage('Cannot post empty comment!')
         } else {
-            if (inputValue.length !== 0) {
-                setIsSubmitting(true);
-                postComment(article_id, { username: user, body: inputValue})
-                .then((newCommentFromApi) => {
-                    setComments([newCommentFromApi, ...comments])
-                    setInputValue("")
-                    setIsSubmitting(false)
-                })
-            }
+            setPleaseLoginMessage(null)
+            setIsSubmitting(true);
+            postComment(article_id, { username: user, body: inputValue})
+            .then((newCommentFromApi) => {
+                setComments([newCommentFromApi, ...comments])
+                setInputValue("")
+                setIsSubmitting(false)
+                setCommentDeleted(false)
+            })
         }
     }
 
@@ -33,6 +34,7 @@ export const CommentAdder = ({ user, commentDeleted, comments, setComments, arti
             <label htmlFor="commentBox"></label>
             <textarea disabled={isSubmitting} value={inputValue} onChange={handleChange} placeholder="Enter your Comment..." id="commentBox" name="commentBox" rows="5" cols="65"></textarea><br />
             <button disabled={isSubmitting} onClick={handleSubmit} type="submit">{isSubmitting ? "Posting..." : "Post Comment"}</button>
+            <p>{pleaseLoginMessage}</p>
             {commentDeleted ? <p>Comment Deleted.</p> : null}
         </form>
     )

@@ -33,7 +33,7 @@ export const UserLogin = ({ user, setUser }) => {
             <p id="loginTagline">The lastest in developer news</p>
             <form>
                 <label htmlFor="usernameInput"></label>
-                <input id="usernameTextBox" onChange={handleChange} type="text" value={usernameValue} placeholder="Enter your username"></input><br />
+                <input id="usernameTextBox" onChange={handleChange} type="text" value={usernameValue} placeholder="cooljmessy"></input><br />
                 <button id="usernameSubmit" onClick={handleSubmit} type="submit">Log In</button>
                 {invalidUsername ? <p id="usernameError">Please enter valid username</p> : null}
                 {user ? <p id="welcomeMessage">Welcome {user}</p> : null}

@@ -61,16 +61,17 @@ a > p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 80%;
 }
 #loginBox {
-    width: 20%;
-    height: 400px;
+    width: 30%;
+    height: 50%;
     background-color: whitesmoke;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 80px;
 }
 #loginBox > h2 {
-    padding-top: 20px;
+    padding-top: 20px;   
     padding-left: 20px;
 }
 #usernameTextBox {
@@ -86,6 +87,12 @@ a > p {
     margin-left: 20px;
     width: 100px;
     height: 30px;
+    border-width: 1px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
+    color: white;
+    background-color: #5374A1;
+    font-size: 18px;
 }
 #loginTagline {
     margin-left: 20px;
@@ -107,6 +114,8 @@ a > p {
     color: white;
     font-size: 20px;
     margin-bottom: 3px;
+    align-self: flex-end;
+    font-style: italic;
 }
 #nav {
     width: 25%;
@@ -289,6 +298,17 @@ a {
 button:hover {
     cursor: pointer;
 }
+#deleteButton {
+    border-width: 1px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px -6px rgb(0 0 0 / 12%);
+    width: 120px;
+    height: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: white;
+    background-color: #5374A1;
+}
 
 
 
@@ -301,8 +321,6 @@ button:hover {
 
 #singleArticleUL {
     width: 50%;
-    /* border-left: 1px solid black;
-    border-right: 1px solid black; */
 }
 #commentSection {
     width: 50%;
@@ -316,6 +334,7 @@ button:hover {
 }
 #commentSection > form {
     padding-bottom: 10px;
+    width: 98%;
 }
 #commentSection > form > button {
     border-width: 1px;
@@ -327,6 +346,15 @@ button:hover {
     font-weight: 600;
     color: white;
     background-color:#5374A1;
+    margin-bottom: 10px;
+}
+#commentSection > form > p {
+    color: red;
+    font-style: italic;
+}
+#commentSection > form > textarea {
+    font-style: italic;
+    font-size: 18px;
 }
 #singleList {
     width: 100%;
@@ -349,6 +377,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 #commentBox {
     width: 100%;
@@ -387,6 +416,40 @@ button:hover {
 #errP {
     width: 50%;
     display: inline;
+}
+#voteError {
+    color: red;
+    font-style: italic;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+footer {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: #233142;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+#copyrightDiv {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#copyrightDiv > p {
+    color: white;
+}
+#externalLinksDiv {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+#externalLinksDiv > p {
+    color: white;
+    margin-left: 20px;
 }
 
 @media only screen and (max-width: 768px), only screen and (max-device-width: 1024px) {
