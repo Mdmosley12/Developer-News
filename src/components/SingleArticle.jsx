@@ -25,7 +25,7 @@ export const SingleArticle = ({ user }) => {
         }, [])
         
     if(loading) {
-        return <h2 id="loading">Loading...</h2>
+        return <h2 className="loading">Loading...</h2>
     }
 
     const handleVoteClick = (article, vote) => {

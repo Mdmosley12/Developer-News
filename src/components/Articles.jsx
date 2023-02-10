@@ -19,7 +19,7 @@ export const Articles = () => {
     }, [])
 
     if(loading) {
-        return <h2 id="loading">Loading...</h2>
+        return <h2 className="loading">Loading...</h2>
     }
 
     const handleSeeMore = () => {
@@ -53,9 +53,9 @@ export const Articles = () => {
                             </Link>
                         </li>
                     })}
+                </ul>
                     {limit < articles.length ? <button id="seeMoreButton" onClick={handleSeeMore}>See More...</button> : null}
                     {limit > 8 ? <button id="seeLessButton" onClick={handleSeeLess}>See Less...</button> : null}
-                </ul>
             </div>
         </section>
     )

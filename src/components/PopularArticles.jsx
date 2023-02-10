@@ -7,7 +7,7 @@ export const PopularArticles = ({ articles }) => {
     
     const pickMostPopular = (articlesArray) => {
         articlesArray.sort((a, b) => b.votes - a.votes)
-        return articlesArray.filter((article, i) => i < 4)
+        return articlesArray.filter((article, i) => i < 8)
     }
 
     const [popularArticles, setPopularArticles] = useState(pickMostPopular(articles))
